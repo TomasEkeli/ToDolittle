@@ -1,0 +1,34 @@
+{
+  "992ca580-2907-4ea9-811c-3f2e78cccd72": {
+    "commands": {
+      "2ee0b55b-2380-41be-a3ab-224cd594ed3c": {
+        "generation": 1,
+        "type": "Domain.TodoItem.CreateItem, Domain"
+      }
+    },
+    "events": {
+      "3105fdd3-471c-4f09-a099-f604beecffb9": {
+        "generation": 1,
+        "type": "Events.TodoItem.ItemCreated, Events"
+      }
+    },
+    "eventSources": {
+      "87b0d00e-047d-482f-b848-7a60f33ab852": {
+        "generation": 1,
+        "type": "Domain.TodoItem.TodoList, Domain"
+      }
+    },
+    "readModels": {
+      "6735c73d-00b9-4a99-95c0-e2e6614fc8ca": {
+        "generation": 1,
+        "type": "Read.TodoItem.TaskList, Read"
+      }
+    },
+    "queries": {
+      "6efd0e3a-7238-4e28-8c0c-2d06b9de74d9": {
+        "generation": 1,
+        "type": "Read.TodoItem.GetTaskListByListId, Read"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "application": "d82d63b1-d798-3165-0197-661903f013d5",
+  "boundedContext": "31f3682e-c9e3-f3cd-0afa-66d8e4716607",
+  "boundedContextName": "TodoTracking",
+  "resources": {
+    "readModels": {
+      "production": "MongoDB",
+      "development": "MongoDB"
+    },
+    "eventStore": {
+      "production": "MongoDB",
+      "development": "MongoDB"
+    }
+  },
+  "core": {
+    "language": "csharp"
+  },
+  "interaction": []
+}
