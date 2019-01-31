@@ -22,5 +22,35 @@ namespace Domain.TodoItem
 
             Apply(createdEvent);
         }
+
+        public void Remove(TodoText text)
+        {
+            var createdEvent = new ItemRemoved(
+                EventSourceId,
+                text
+            );
+
+            Apply(createdEvent);
+        }
+
+        public void MarkAsDone(TodoText text)
+        {
+            var createdEvent = new ItemDone(
+                EventSourceId,
+                text
+            );
+
+            Apply(createdEvent);
+        }
+
+        public void MarkAsNotDone(TodoText text)
+        {
+            var createdEvent = new ItemNotDone(
+                EventSourceId,
+                text
+            );
+
+            Apply(createdEvent);
+        }
     }
 }

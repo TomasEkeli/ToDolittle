@@ -4,12 +4,36 @@
       "2ee0b55b-2380-41be-a3ab-224cd594ed3c": {
         "generation": 1,
         "type": "Domain.TodoItem.CreateItem, Domain"
+      },
+      "87231ff3-b0a4-4eff-8993-521eb6ce67cf": {
+        "generation": 1,
+        "type": "Domain.TodoItem.DeleteItem, Domain"
+      },
+      "f25ecc05-0aa8-45ef-9ab8-e65c675a11e3": {
+        "generation": 1,
+        "type": "Domain.TodoItem.MarkItemAsDone, Domain"
+      },
+      "f605cb89-5af2-4955-9658-7824afd8075c": {
+        "generation": 1,
+        "type": "Domain.TodoItem.MarkItemAsNotDone, Domain"
       }
     },
     "events": {
       "3105fdd3-471c-4f09-a099-f604beecffb9": {
         "generation": 1,
         "type": "Events.TodoItem.ItemCreated, Events"
+      },
+      "cb39c821-e827-45a8-82f1-6bcd9a097f98": {
+        "generation": 1,
+        "type": "Events.TodoItem.ItemDone, Events"
+      },
+      "0fc73337-f76a-467e-a736-2b2ea59bcfbd": {
+        "generation": 1,
+        "type": "Events.TodoItem.ItemNotDone, Events"
+      },
+      "02d6e237-523d-4852-a674-140892bc28b3": {
+        "generation": 1,
+        "type": "Events.TodoItem.ItemRemoved, Events"
       }
     },
     "eventSources": {
