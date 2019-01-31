@@ -34,6 +34,10 @@
       "02d6e237-523d-4852-a674-140892bc28b3": {
         "generation": 1,
         "type": "Events.TodoItem.ItemRemoved, Events"
+      },
+      "c59ba13d-b7ab-4268-8b97-32e3ef69e1b0": {
+        "generation": 1,
+        "type": "Events.TodoItem.ListDeleted, Events"
       }
     },
     "eventSources": {
@@ -46,12 +50,20 @@
       "6735c73d-00b9-4a99-95c0-e2e6614fc8ca": {
         "generation": 1,
         "type": "Read.TodoItem.TaskList, Read"
+      },
+      "8d826b95-7a72-45be-acd0-94b2342f9368": {
+        "generation": 1,
+        "type": "Read.TodoItem.AvailableLists, Read"
       }
     },
     "queries": {
       "6efd0e3a-7238-4e28-8c0c-2d06b9de74d9": {
         "generation": 1,
         "type": "Read.TodoItem.GetTaskListByListId, Read"
+      },
+      "1d572dea-d428-46a3-800a-a50271911609": {
+        "generation": 1,
+        "type": "Read.TodoItem.AllAvailableLists, Read"
       }
     }
   }

@@ -92,5 +92,16 @@ namespace Read.TodoItem
 
             _repositoryForTaskList.Update(taskList);
         }
+
+        [EventProcessor("32CD85D7-AEDD-452F-9217-BF843BCBCF8B")]
+        public void Process(ListDeleted evt)
+        {
+            var list = _repositoryForTaskList.GetById(evt.ListId);
+
+            if (list != null) 
+            {
+                _repositoryForTaskList.Delete(list);;
+            }
+        }
     }
 }
