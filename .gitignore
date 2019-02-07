@@ -29,3 +29,9 @@ _ReSharper*/
 [Tt]est[Rr]esult*
 **/node_modules/*
 *.bundle.js
+package-lock.json
+yarn.lock
+.buildsettings
+wwwroot
+.DS_Store
+

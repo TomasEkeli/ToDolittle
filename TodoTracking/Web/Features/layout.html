@@ -1,6 +1,12 @@
 <template>
-    <require from="./layout.scss"></require>
-    <main class="${router.currentInstruction.config.settings.cssClass ? router.currentInstruction.config.settings.cssClass : 'narrow-column'} default_layout">
-        <slot></slot>
-    </main>
+  <require from="todomvc-app-css/index.css"></require>
+  <section class="todoapp">
+      <slot></slot>
+  </section>
+
+  <footer class="info">
+    <p>Double-click to edit a todo</p>
+    <p>Created by <a href="http://marcelhoyer.de">Marcel Hoyer</a></p>
+    <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+  </footer>
 </template>

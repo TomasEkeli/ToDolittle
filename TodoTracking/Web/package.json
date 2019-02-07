@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
+    "watch": "webpack --mode development --open --watch --progress --hot",
     "start": "webpack-dev-server --mode development --open --watch --progress --hot",
     "run": "cd .. && dolittle run"
   },
@@ -24,6 +25,8 @@
     "@dolittle/core": "^1.0.4",
     "@dolittle/queries": "^1.0.12",
     "aurelia-http-client": "^1.2.1",
-    "dotenv": "^6.1.0"
+    "dotenv": "^6.1.0",
+    "todomvc-app-css": "^2.1.2",
+    "underscore": "^1.9.1"
   }
 }
