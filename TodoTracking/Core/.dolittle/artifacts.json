@@ -16,6 +16,10 @@
       "f605cb89-5af2-4955-9658-7824afd8075c": {
         "generation": 1,
         "type": "Domain.TodoItem.MarkItemAsNotDone, Domain"
+      },
+      "0cf809b9-18d8-4e3d-a26f-bef417090914": {
+        "generation": 1,
+        "type": "Domain.TodoItem.ClearList, Domain"
       }
     },
     "events": {
