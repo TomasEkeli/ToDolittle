@@ -8,17 +8,20 @@ namespace Domain.TodoItem
     {
         MustBeAnExistingList _beAnExistingList;
         MustBeATaskOnTheList _beATaskOnTheList;
-        MustBeDoneOnTheList _beDonOnTheList;
+        MustBeDoneOnTheList _beDoneOnTheList;
+        MustBeDoneRecently _beDoneRecently;
 
         public MarkItemAsNotDoneBusinessValidator(
             MustBeAnExistingList beAnExistingList,
             MustBeATaskOnTheList beATaskOnTheList,
-            MustBeDoneOnTheList beDoneOnTheList
+            MustBeDoneOnTheList beDoneOnTheList,
+            MustBeDoneRecently beDoneRecently
         )
         {
             _beAnExistingList = beAnExistingList;
             _beATaskOnTheList = beATaskOnTheList;
-            _beDonOnTheList = beDoneOnTheList;
+            _beDoneOnTheList = beDoneOnTheList;
+            _beDoneRecently = beDoneRecently;
 
             RuleFor(cmd => cmd)
                 .Must(BeAnExistingList)
@@ -31,11 +34,20 @@ namespace Domain.TodoItem
             RuleFor(cmd => cmd)
                 .Must(BeDone)
                 .WithMessage(ValidationStrings.TaskIsNotDone);
+
+            RuleFor(cmd => cmd)
+                .Must(BeDoneRecently)
+                .WithMessage(ValidationStrings.TaskMustBeRecentlyDone);
         }
 
         bool BeDone(MarkItemAsNotDone cmd)
         {
-            return _beDonOnTheList(cmd.List, cmd.Text);
+            return _beDoneOnTheList(cmd.List, cmd.Text);
+        }
+
+        bool BeDoneRecently(MarkItemAsNotDone cmd)
+        {
+            return _beDoneRecently(cmd.List, cmd.Text);
         }
 
         bool BeAnExistingList(MarkItemAsNotDone cmd)

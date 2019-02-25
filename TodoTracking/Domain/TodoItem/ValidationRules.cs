@@ -7,4 +7,5 @@ namespace Domain.TodoItem
     public delegate bool MustNotBeATaskOnTheList(ListId list, TodoText text);
     public delegate bool MustBeDoneOnTheList(ListId list, TodoText text);
     public delegate bool MustNotBeDoneOnTheList(ListId list, TodoText text);
+    public delegate bool MustBeDoneRecently(ListId list, TodoText text);
 }
