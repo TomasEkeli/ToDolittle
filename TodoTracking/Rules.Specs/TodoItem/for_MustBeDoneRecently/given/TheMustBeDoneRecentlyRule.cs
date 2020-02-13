@@ -14,7 +14,7 @@ namespace Rules.Specs.TodoItem.for_MustBeDoneRecently.given
             _repository = Substitute.For<IReadModelRepositoryFor<TaskCompletions>>();
             _rule = new MustBeDoneRecently(_repository);
         };
-        
+
         protected static MustBeDoneRecently _rule;
         protected static IReadModelRepositoryFor<TaskCompletions> _repository;
     }

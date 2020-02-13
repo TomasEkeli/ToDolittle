@@ -58,6 +58,10 @@
       "8d826b95-7a72-45be-acd0-94b2342f9368": {
         "generation": 1,
         "type": "Read.TodoItem.AvailableLists, Read"
+      },
+      "6f76cf2d-ec0b-4821-a672-91d5d35d8390": {
+        "generation": 1,
+        "type": "Read.TodoItem.TaskCompletions, Read"
       }
     },
     "queries": {

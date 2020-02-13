@@ -5,42 +5,46 @@ namespace Domain.TodoItem
 {
     public class ItemHandler : ICanHandleCommands
     {
-        readonly IAggregateRootRepositoryFor<TodoList>  _aggregateRootRepoForTodoList;
+        readonly IAggregateOf<TodoList>  _aggregateSource;
 
         public ItemHandler(
-            IAggregateRootRepositoryFor<TodoList>  aggregateRootRepoForTodoList            
+            IAggregateOf<TodoList>  aggregateSource
         )
         {
-             _aggregateRootRepoForTodoList =  aggregateRootRepoForTodoList;
+             _aggregateSource =  aggregateSource;
         }
 
         public void Handle(CreateItem cmd)
         {
-            var todoList = _aggregateRootRepoForTodoList.Get(cmd.List.Value);
+            var result = _aggregateSource
+                .Create(cmd.List.Value)
+                .Perform(_ => _.Add(cmd.Text));
 
-            todoList.Add(cmd.Text);
+            if (!result.IsSuccess)
+            {
+                // do something with the rules that failed
+            }
         }
 
         public void Handle(DeleteItem cmd)
         {
-            var todoList = _aggregateRootRepoForTodoList.Get(cmd.List.Value);
-
-            todoList.Remove(cmd.Text);
+            _aggregateSource
+                .Rehydrate(cmd.List.Value)
+                .Perform(_ => _.Remove(cmd.Text));
         }
 
         public void Handle(MarkItemAsDone cmd)
         {
-            var todoList = _aggregateRootRepoForTodoList.Get(cmd.List.Value);
-
-            todoList.MarkAsDone(cmd.Text);
+            _aggregateSource
+                .Rehydrate(cmd.List.Value)
+                .Perform(_ => _.MarkAsDone(cmd.Text));
         }
 
         public void Handle(MarkItemAsNotDone cmd)
         {
-            var todoList = _aggregateRootRepoForTodoList.Get(cmd.List.Value);
-
-            todoList.MarkAsNotDone(cmd.Text);
+            _aggregateSource
+                .Rehydrate(cmd.List.Value)
+                .Perform(_ => _.MarkAsNotDone(cmd.Text));
         }
-        
     }
 }

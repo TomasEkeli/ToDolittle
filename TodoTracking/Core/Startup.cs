@@ -1,7 +1,8 @@
+using System;
 using Autofac;
-using Dolittle.AspNetCore.Bootstrap;
 using Dolittle.Booting;
 using Dolittle.DependencyInversion.Autofac;
+using Dolittle.Tenancy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,13 +11,16 @@ using Swashbuckle.AspNetCore.Swagger;
 
 namespace Core
 {
-    public partial class Startup
+    public class Startup
     {
         readonly IHostingEnvironment _hostingEnvironment;
         readonly ILoggerFactory _loggerFactory;
         BootloaderResult _bootResult;
 
-        public Startup(IHostingEnvironment hostingEnvironment, ILoggerFactory loggerFactory)
+        public Startup(
+            IHostingEnvironment hostingEnvironment,
+            ILoggerFactory loggerFactory
+        )
         {
             _hostingEnvironment = hostingEnvironment;
             _loggerFactory = loggerFactory;
@@ -26,43 +30,47 @@ namespace Core
         {
             if (_hostingEnvironment.IsDevelopment())
             {
-                services.AddSwaggerGen(c =>
-                {
-                    c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-                });
+                services.AddSwaggerGen(
+                    c => c.SwaggerDoc(
+                        "v1",
+                        new Info { Title = "My API", Version = "v1" }
+                    )
+                );
             }
             services.AddMvc();
 
             _bootResult = services.AddDolittle(_loggerFactory);
         }
 
-
         public void ConfigureContainer(ContainerBuilder containerBuilder)
         {
-            containerBuilder.AddDolittle(_bootResult.Assemblies, _bootResult.Bindings);
+            containerBuilder.AddDolittle(
+                _bootResult.Assemblies,
+                _bootResult.Bindings
+            );
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
+                app.EnsureFallbackTenant(TenantId.Development);
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                });
+                app.UseSwaggerUI(
+                    c => c.SwaggerEndpoint(
+                        "/swagger/v1/swagger.json", "My API V1"
+                    )
+                );
             }
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
+            app.UseDolittle(); // has to come before app.UseMvc()
             app.UseMvc();
 
-
-            app.UseDolittle();
             app.RunAsSinglePageApplication();
         }
-
     }
 }
